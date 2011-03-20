@@ -1,0 +1,38 @@
+:: Identification & Removal of Noise from an Acoustic Guitar Recording
+
+:Overview
+
+This project uses the MATLAB Signal Processing Toolbox to filter noise from a piece of music. In this case, the noise to be removed is the 'scratching' sound made by sliding fingers on the strings of a guitar. The first part of this project focuses on the filter design process, while the second on the development of a classifier to locate noise in the piece.
+
+:Filter Design Process
+
+Using the MATLAB signal processing toolbox, design a set of digital filters suitable for removing noise from a recorded piece of music. Once the center frequency and bandwidth of the filter is known, an IIR filter is designed using the following basic process:
+
+1:- Create Butterworth analog lowpass prototype filter
+
+2:- Transform lowpass prototype to bandstop with required bandwidth and center frequency
+
+3:- Using the Bilinear transform, create a discrete time approximation of the desired bandstop filter
+
+
+For purposes of testing the performance of the filters, a listener identifies 5 pieces of noise in the song by marking points in time where the noise is heard, and by observing the power spectrum at that point in time for spikes.
+
+The set of filters which were individually designed were then combined to form a single 10th order IIR filter.
+
+
+:Noise Location Process
+
+1:- Manually identify a set of noise signatures
+
+2:- Use noise signatures as training set for a classifier
+
+3:- With the trained classifier, classify an experimental set of data (the rest of the song)
+
+:Result
+
+After applying filters to the areas identified as noise by the classifier, the scratching sound can no longer be heard. Also, there is no noticeable adverse effect on the the guitar piece itself.
+
+: Resources
+MATLAB Signal Processing Toolbox: http://www.mathworks.com/help/toolbox/signal/
+Proakis/Manolakis DSP: http://www.amazon.com/Digital-Signal-Processing-John-Proakis/dp/0131873741
+H. Wu, M. Siegel and P. Khosla, "Vehicle Sound Signature Recognition by Frequency Vector Principal Component Analysis" IEEE Trans. on Instr. and Meas., Vol. 48, Oct. 1999
